@@ -1,1 +1,103 @@
-css
+@charset "utf-8";
+/* CSS Document */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 0.8em;
+  font-family: 'Rubik', sans-serif;
+  color: #2E2F3E;
+  font-weight: 300;
+  background-color: #FFF;
+  padding: 0.3em;
+  max-width: 1400px;
+  margin: auto;
+}
+
+hr {
+  color: #FFF;
+}
+
+header {
+  margin: auto;
+  text-align: center;
+  color: #000;
+  margin: 0.8em auto;
+  margin-bottom: 2em;
+}
+
+#search {
+  border-radius: 5px;
+  background-color: #14151F;
+  border: 0;
+  color: #FFF;
+  font-weight: 500;
+  padding: 0 15px;
+}
+
+input:focus, #search:focus {
+	border: 3px solid #03A9F4;
+	transition: 0.2s;
+}
+
+#employee-list {
+  display: grid;
+  grid-row-gap: 1em;
+  justify-items: center;
+
+}
+
+/*Employee Card CSS*/
+
+#employee-list {
+  display: grid;
+  grid-row-gap: 1em;
+  justify-items: center;
+}
+
+.employee-card {
+  border-radius: 5px;
+  background-color: #14151F;
+  box-shadow: none;
+  padding: 0.5em;
+  display: flex;
+  width: 93%;
+  margin: auto;
+  border: 5px solid #14151F;
+}
+
+.employee-card:hover {
+	border: 5px solid #03A9F4;
+	transition: 0.2s;
+}
+
+img {
+  border-radius: 50%;
+  width: 5em;
+  height: auto;
+  margin: auto 0.4em;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 0.5em;
+}
+
+
+.card p {
+  margin: 0.4em;
+  margin-left: 0;
+  color: #FFF;
+}
+
+.card h2 {
+  font-size: 1.4em;
+  font-weight: 500;
+  color: #FFF;
+  margin: 0.25em 0;
+
+}
