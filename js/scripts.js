@@ -12,7 +12,6 @@ function generateData() {
    .then(data => { //Anonymous function, do something...
      const results = data.results; //get the data received, store it in "const results"
      generateEmployees(results);  // Call the generateEmployees function, pass it the data stored in results variable
-     console.log(results); //Log the results
    })
    .catch(error => console.log("Oops! Something went wrong.", error)) //If something goes wrong, catch the error and log the message
 }
@@ -22,13 +21,13 @@ function generateEmployees(data) {
   let html = []; //set an empty array
   let index = 0; //set the index count at 0
   data.map(result => { //map over all of the data results
-    let name = `${changeCase(result.name.first)} ${changeCase(result.name.last)}`;
-    let city = changeCase(result.location.city);
+    let name = `${result.name.first} ${result.name.last}`;
+    let city = result.location.city;
     const thumbnail = `
       <section class="employee-card" data-index=${index}><img class="employee-img" src=${result.picture.large}>
       <div class="card">
       <h2>${name}</h2>
-      <p>${result.email.toLowerCase()}</p>
+      <p>${result.email}</p>
       <p>${city}</p>
       </div>
       </section>`; //Format all this HTML markup
@@ -40,9 +39,9 @@ function generateEmployees(data) {
          name,
          city,
          phone: result.phone,
-         email: result.email.toLowerCase(),
-         street: `${result.location.street.number} ${changeCase(result.location.street.name)}`,
-         nationality: result.nat.toUpperCase(),
+         email: result.email,
+         street: `${result.location.street.number} ${result.location.street.name}`,
+         nationality: result.nat,
          zipCode: result.location.postcode,
          image: result.picture.large,
          birthday: new Date(result.dob.date)
@@ -51,19 +50,6 @@ function generateEmployees(data) {
        employees.push(employee);  // add the employee to the employees array
      });
      list.innerHTML = html; //Adds all of this to the list variable
-   }
-
-   function changeCase(str) {
-     str = str.replace("ß", "ss");
-     str = str.replace("-", " - ");
-     str = str.replace("/", " - ");
-     str = str.replace("\'", " \' ");
-     let words = str.split(" ");
-     let newString = [];
-     words.forEach(word => newString += `${word[0].toUpperCase()}${word.slice(1)} `);
-     newString = newString.replace(" - ", "-");
-     newString = newString.replace(" \' ", "\'");
-     return newString;
    }
 
 generateData();
