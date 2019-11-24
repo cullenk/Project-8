@@ -53,6 +53,7 @@ function generateEmployees(data) {
 
      list.innerHTML = html; //Adds all of this to the list variable
 
+     // Add click functionality to each card element created in the list/gallery
      list.querySelectorAll('.card').forEach((card, index) => {
        card.addEventListener('click', () => {
          modal(employees[index]);
@@ -65,26 +66,6 @@ generateData();
 
 // CREATING THE POP UP MODAL OVERLAY
 
-// const directory = employees => {
-//   const gallery = document.querySelector('#gallery');
-//
-//   employees.forEach( employee => {
-//     gallery.innerHTML += `
-//     <div class="card">
-//       <div class="card-img-container">
-//         <img class="card-img" src="${employee.picture.large}" alt="${employee.name.first}'s profile picture">
-//       </div>
-//       <div class="card-info-container">
-//         <h3 id="name" class="card-name cap">${employee.name.first} ${employee.name.last}</h3>
-//         <p class="card-text">${employee.email}</p>
-//         <p class="card-text cap">${employee.location.city}</p>
-//       </div>
-//     </div>
-//   `;
-//   });
-
-
-// directory(employees);
 
 const modal = employee => {
   const modalContainer = document.querySelector('.modal-container');
