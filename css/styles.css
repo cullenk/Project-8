@@ -44,7 +44,7 @@ input:focus, #search:focus {
 
 /*Employee Card CSS*/
 
-#employee-list {
+#gallery {
   display: grid;
   grid-row-gap: 2em;
   margin-top: 50px;
@@ -96,7 +96,7 @@ img {
 }
 
 @media (min-width: 768px) {
-  #employee-list {
+  #gallery {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -133,7 +133,38 @@ img {
     font-size: 1.3em;
   }
 
-  #employee-list {
+  #gallery {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* Modal Styles */
+
+/* Parent container in the index.html */
+.modal-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+​
+/* Container that is built via DOM injection in the modal function */
+​
+.modal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 320px;
+  height: 475px;
+  margin: auto;
+  padding-bottom: 15px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 0.25em;
+  border: 1px solid rgba(100, 100, 100, 0.3);
+  transition: .4s ease-out;
 }
