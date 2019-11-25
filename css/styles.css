@@ -51,7 +51,7 @@ input:focus, #search:focus {
   margin-bottom: 50px;
 }
 
-.employee-card {
+.card {
   border-radius: 5px;
   background-color: white;
   padding: 0.5em;
@@ -62,7 +62,7 @@ input:focus, #search:focus {
   box-shadow: 5px 10px 10px #888888;
 }
 
-.employee-card:hover {
+.card:hover {
 	border: 2px solid orange;
 	transition: 0.2s;
 }
@@ -74,7 +74,7 @@ img {
   margin: auto 0.4em;
 }
 
-.card {
+.card-info-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,13 +82,13 @@ img {
   width: auto;
 }
 
-.card p {
+.card-info-container p {
   margin: 0.4em;
   margin-left: 0;
   color: gray;
 }
 
-.card h2 {
+.card-info-container h2 {
   font-size: 1.4em;
   font-weight: 500;
   color: black;
@@ -100,7 +100,7 @@ img {
     grid-template-columns: 1fr 1fr;
   }
 
-  .employee-card {
+  .card {
     height: auto;
   }
 
