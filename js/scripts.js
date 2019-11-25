@@ -10,9 +10,11 @@ function generateData() {
     console.log(results);
    })
    .catch(error => console.log("Oops! Something went wrong.", error)) //If something goes wrong, catch the error and log the message
-}
+};
 
-const directory = employees => { //Anonymous function to handle the insertion of newly created DOM elements for the employees (paramter) in the array.
+generateData();
+
+const directory = employees => { //Anonymous function to handle the insertion of newly created DOM elements for the employees (parameter) in the array.
   const gallery = document.querySelector('#gallery'); //The place to store the elements
 
   employees.forEach(employee => { //loop through each employee in the array
@@ -47,7 +49,7 @@ const modal = employee => {
   const modalContainer = document.querySelector('.modal-container');
   const dob = new Date(Date.parse(employee.dob.date)).toLocaleDateString(navigator.language); // Formats date depending on users locale.
 
-  modalContainer.innerHTML += `
+  modalContainer.innerHTML = `
     <div class="modal">
       <div class="modal-info-container">
         <img class="modal-img" src="${employee.picture.large}" alt="${employee.name.first}'s profile picture">
