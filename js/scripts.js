@@ -1,13 +1,15 @@
 const url = "https://randomuser.me/api/?results=12&nat=us,au,ca,ch,de,gb,fr&inc=name, picture, email, location, phone, dob, nat & noinfo";
+const employees = [];
 
-const employees = function generateData() {
+function generateData() {
  fetch(url) //fetch takes one argument, the source of where the info is coming from. Stored in url variable...
    .then(response => response.json()) //Anonymous function. Take that information, parse the data into json() format which are name: value pairs.
    .then(data => { //Anonymous function, do something...
-    const results = data.results; //get the data received, store it in "const employees"
+    const results = data.results; //get the data received, store it in "const results"
     console.log(results);
    })
    .catch(error => console.log("Oops! Something went wrong.", error)) //If something goes wrong, catch the error and log the message
+   employees.push(results)
 }
 
 const directory = employees => { //Anonymous function to handle the insertion of newly created DOM elements for the employees (paramter) in the array.
