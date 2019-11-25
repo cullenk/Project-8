@@ -47,7 +47,7 @@ const modal = employee => {
   const modalContainer = document.querySelector('.modal-container');
   const dob = new Date(Date.parse(employee.dob.date)).toLocaleDateString(navigator.language); // Formats date depending on users locale.
 
-  modalContainer.innerHTML = `
+  modalContainer.innerHTML += `
     <div class="modal">
       <div class="modal-info-container">
         <img class="modal-img" src="${employee.picture.large}" alt="${employee.name.first}'s profile picture">
