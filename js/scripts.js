@@ -6,10 +6,10 @@ function generateData() {
    .then(response => response.json()) //Anonymous function. Take that information, parse the data into json() format which are name: value pairs.
    .then(data => { //Anonymous function, do something...
     const results = data.results; //get the data received, store it in "const results"
+    employees.push(results)
     console.log(results);
    })
    .catch(error => console.log("Oops! Something went wrong.", error)) //If something goes wrong, catch the error and log the message
-   employees.push(results)
 }
 
 const directory = employees => { //Anonymous function to handle the insertion of newly created DOM elements for the employees (paramter) in the array.
@@ -42,23 +42,25 @@ const directory = employees => { //Anonymous function to handle the insertion of
 
 directory(employees);
 
+
 const modal = employee => {
   const modalContainer = document.querySelector('.modal-container');
   const dob = new Date(Date.parse(employee.dob.date)).toLocaleDateString(navigator.language); // Formats date depending on users locale.
 
   modalContainer.innerHTML = `
-  <div class="modal">
-     <div class="modal-info-container">
-       <img class="modal-img" src="${employee.picture.large}" alt="${employee.name.first}'s profile picture">
-       <h3 id="name" class="modal-name cap">${employee.name.first} ${employee.name.last}</h3>
-       <p class="modal-text">${employee.email}</p>
-       <p class="modal-text cap">${employee.location.city}</p><hr>
-       <p class="modal-text">${employee.phone}</p>
-       <p class="modal-text cap">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.state} ${employee.location.postcode}</p>
-       <p class="modal-text">Birthday: ${dob}</p>
-     </div>
-   </div>
-  `​;
+    <div class="modal">
+      <div class="modal-info-container">
+        <img class="modal-img" src="${employee.picture.large}" alt="${employee.name.first}'s profile picture">
+        <h3 id="name" class="modal-name cap">${employee.name.first} ${employee.name.last}</h3>
+        <p class="modal-text">${employee.email}</p>
+        <p class="modal-text cap">${employee.location.city}</p><hr>
+        <p class="modal-text">${employee.phone}</p>
+        <p class="modal-text cap">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.state} ${employee.location.postcode}</p>
+        <p class="modal-text">Birthday: ${dob}</p>
+      </div>
+    </div>
+  `;
+
   modalContainer.style.display = 'block';
 };
 
