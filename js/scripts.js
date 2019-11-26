@@ -1,5 +1,7 @@
 const url = "https://randomuser.me/api/?results=12&nat=us,au,ca,ch,de,gb,fr&inc=name, picture, email, location, phone, dob, nat & noinfo";
 const modalContainer = document.querySelector('.modal-container');
+const previous = document.querySelector(".previous");
+const next = document.querySelector(".next");
 const employees = [];
 const index = 0;
 const searchField = document.getElementById("search");
@@ -40,7 +42,7 @@ const directory = employees => { //Anonymous function to handle the insertion of
 
   gallery.querySelectorAll('.card').forEach((card, index) => { //Gives click functionality to each new card/employee element.
       card.addEventListener('click', () => {
-        modal(employees[index]); //calls the model function for the single employee that was clicked.
+        modal(employees, employees[index], index); //calls the model function for the single employee that was clicked.
       });
     });
 
@@ -64,7 +66,7 @@ function changeCase(str) {
   return newString;
 }
 
-const modal = employee => {
+const modal = (employees, employee, index) => {
   const dob = new Date(Date.parse(employee.dob.date)).toLocaleDateString(navigator.language); // Formats date depending on users locale.
 
   modalContainer.innerHTML = `
@@ -84,22 +86,24 @@ const modal = employee => {
     </div>
   `;
 
-  modalContainer.style.display = 'block';
-};
+    modalContainer.style.display = 'block';
 
-  modalContainer.addEventListener("click", (e) => { //When the user clicks on certain things in the pop-up modal...
-    if(e.target.className === "close") { //If they click on the "x"...
-      modalContainer.style.display = "none"; //Remove the modal display
-    } else if (e.target.className === "previous") { //If they click on the previous arrow
-      index --; //Take the current index value and subtract 1 to go back.
-      employee = employees[index]; //the index value of the currently displayed employee will be stored
-      modal(employee); //Run the created modal function to generate another employee card one index back
-    } else if (e.target.className=== "next") {
-      index ++;//Take the current index value and add 1 to go forward.
-      employee = employees[index];//the index value of the currently displayed employee will be stored
-      modal(employee);//Run the created modal function to generate another employee card one index back
-    }
-});
+    modalContainer.addEventListener("click", (e) => { //When the user clicks on certain things in the pop-up modal...
+      if(e.target.className === "close") { //If they click on the "x"...
+        modalContainer.style.display = "none"; //Remove the modal display
+         } if (e.target.className === "previous") { //If they click on the previous arrow
+           modal(employees, employees[index - 1], index - 1);
+         } else if (e.target.index === 0) {
+           modal(employees[11]);
+         } if (e.target.className === "next") {
+           modal(employees, employees[index + 1], index + 1);
+         } else if (e.target.index === 11) {
+           modal(employees[0]);
+         }
+       });
+     }
+
+
 
 function search() {
   let searchValue = searchField.value.toLowerCase();
