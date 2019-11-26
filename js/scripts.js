@@ -91,16 +91,19 @@ const modal = (employees, employee, index) => {
     modalContainer.addEventListener("click", (e) => { //When the user clicks on certain things in the pop-up modal...
       if(e.target.className === "close") { //If they click on the "x"...
         modalContainer.style.display = "none"; //Remove the modal display
-         } if (e.target.className === "previous") { //If they click on the previous arrow
-           modal(employees, employees[index - 1], index - 1);
-         } else if (e.target.index === 0) {
-           modal(employees[11]);
-         } if (e.target.className === "next") {
-           modal(employees, employees[index + 1], index + 1);
-         } else if (e.target.index === 11) {
-           modal(employees[0]);
-         }
+        } else if (e.target.className === "previous") { //If they click on the previous arrow
+          modal(employees, employees[index - 1], index - 1);
+        } else if (e.target.className === "next") {
+          modal(employees, employees[index + 1], index + 1);
+          }
        });
+
+    modalContainer.addEventListener("click", (e) => {
+      if(e.target.className === "previous" && e.target.index === 0){
+        modal(employees[11]);
+      }
+    });
+
      }
 
 
