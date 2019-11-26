@@ -107,8 +107,6 @@ const modal = (employees, employee, index) => {
     });
      }
 
-
-
 function search() {
   let searchValue = searchField.value.toLowerCase();
   let employeeCard = document.querySelectorAll(".card");
