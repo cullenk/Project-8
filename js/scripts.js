@@ -1,7 +1,5 @@
 const url = "https://randomuser.me/api/?results=12&nat=us,au,ca,ch,de,gb,fr&inc=name, picture, email, location, phone, dob, nat & noinfo";
 const modalContainer = document.querySelector('.modal-container');
-const previous = document.querySelector(".previous");
-const next = document.querySelector(".next");
 const employees = [];
 const index = 0;
 const searchField = document.getElementById("search");
@@ -92,18 +90,21 @@ const modal = (employees, employee, index) => {
       if(e.target.className === "close") { //If they click on the "x"...
         modalContainer.style.display = "none"; //Remove the modal display
         } else if (e.target.className === "previous") { //If they click on the previous arrow
-          modal(employees, employees[index - 1], index - 1);
-        } else if (e.target.className === "next") {
-          modal(employees, employees[index + 1], index + 1);
+          if (index > 0) { //If they click on anything besides the first one...
+            modal(employees, employees[index - 1], index - 1); //move back one card
+          } else {
+            modal(employees, employees[employees.length - 1], employees.length - 1); //If they click on the first one, move to the length(12) minus 1 which would display the 11th card.
           }
-       });
-
-    modalContainer.addEventListener("click", (e) => {
-      if(e.target.className === "previous" && e.target.index === 0){
-        modal(employees[11]);
-      }
+        } else if (e.target.className === "next") { //If they click on the next arrow
+          if (index < employees.length - 1) { //if what they clicked on is not the last card
+            modal(employees, employees[index + 1], index + 1); //move forward one card.
+          } else {
+            modal(employees, employees[0], 0); //If they did click on the last card, move back to the first card (index of 0)
+          }
+        } else {
+          return; // end the function, return the value it's landed on.
+        }
     });
-
      }
 
 

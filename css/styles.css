@@ -29,7 +29,6 @@ header {
 #search {
   border-radius: 5px;
   background-color: white;
-  border: 10;
   color: black;
   font-weight: 500;
   padding: 3px 15px;
@@ -96,49 +95,6 @@ img {
   margin: 0.25em 0;
 }
 
-@media (min-width: 768px) {
-  #gallery {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .card {
-    height: auto;
-  }
-
-  img {
-    width: auto;
-    height: auto;
-  }
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    margin-top: 20px;
-  }
-
-  h1 {
-    margin: auto;
-    margin-left: 35px;
-  }
-
-  .search {
-    margin-right: 35px;
-  }
-
-  #search {
-    width: 250px;
-  }
-
-  .searchtext {
-    font-size: 1.3em;
-  }
-
-  #gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 /* Modal Styles */
 
 .modal-container {
@@ -161,6 +117,7 @@ img {
   height: 475px;
   margin: auto;
   text-align: center;
+  font-size: 1.4em;
   padding-bottom: 15px;
   background: rgba(255, 255, 255, 1);
   border-radius: 0.25em;
@@ -236,4 +193,47 @@ img {
   width: 75%;
   margin: 25px auto 30px;
   border-color: rgba(200, 200, 200, 0.2);
+}
+
+@media (min-width: 768px) {
+  #gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    height: auto;
+  }
+
+  img {
+    width: auto;
+    height: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  h1 {
+    margin: auto;
+    margin-left: 35px;
+  }
+
+  .search {
+    margin-right: 35px;
+  }
+
+  #search {
+    width: 250px;
+  }
+
+  .searchtext {
+    font-size: 1.3em;
+  }
+
+  #gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
