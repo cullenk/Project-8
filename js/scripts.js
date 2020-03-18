@@ -1,3 +1,6 @@
+
+/*jshint esversion: 6 */
+
 const url = "https://randomuser.me/api/?results=12&nat=us,au,ca,ch,de,gb,fr&inc=name, picture, email, location, phone, dob, nat & noinfo";
 const modalContainer = document.querySelector('.modal-container');
 const employees = [];
@@ -12,9 +15,9 @@ function generateData() {
     directory(results); // call the directory function, create cards for each employee passed through it
     employees.push(results); //store the employees returned rom the API in a global variable so we can access them later
    })
-   .catch(error => console.log("Oops! Something went wrong.", error)) //If something goes wrong, catch the error and log the message
+   .catch(error => console.log("Oops! Something went wrong.", error)); //If something goes wrong, catch the error and log the message
 
-};
+}
 
 generateData();
 
@@ -105,7 +108,7 @@ const modal = (employees, employee, index) => {
           return; // end the function, return the value it's landed on.
         }
     });
-     }
+  };
 
 function search() {
   let searchValue = searchField.value.toLowerCase();
